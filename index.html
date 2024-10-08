@@ -10,14 +10,14 @@
 </head>
 <body>
     <div class="container mt-5">
-        <form >
+        <form id="priceCalculator">
             <div class="mb-3">
-              <label for="kmDistance" class="form-label">Disatnza da percorrere (Km)</label>
-              <input type="number" class="form-control" id="kmDistance" step="0.5" min="0" aria-describedby="kmDistance" placeholder="inserisci la distanza che vuoi percorrere" required>
+              <label for="kmInput" class="form-label">Disatnza da percorrere (Km)</label>
+              <input type="number" class="form-control" id="kmInput" step="0.5" min="0" aria-describedby="kmDistance" placeholder="inserisci la distanza che vuoi percorrere" required>
             </div>
             <div class="mb-3">
-                <label for="userAge" class="form-label">Età del passeggero</label>
-                <input type="number" class="form-control" id="userAge" min="0" max="110" aria-describedby="userAge" placeholder="inserisci l'età del passeggero" required>
+                <label for="ageInput" class="form-label">Età del passeggero</label>
+                <input type="number" class="form-control" id="ageInput" min="0" max="110" aria-describedby="userAge" placeholder="inserisci l'età del passeggero" required>
             </div>
             <button type="submit" class="btn btn-primary mt-2" id="submit">Calcola Prezzo</button>
           </form>
