@@ -1,4 +1,5 @@
 //known prices and discounts
+
 const kmPrice = 0.21;
 const underAge = 18;
 const overAge = 65;
@@ -6,6 +7,7 @@ const underDiscount = 20;
 const overDiscount = 40;
 
 //get form from dom
+
 const myForm = document.getElementById('priceCalculator');
 
 //user input area
@@ -13,11 +15,9 @@ const myForm = document.getElementById('priceCalculator');
 const kmInput = document.getElementById('kmInput');
 const ageInput = document.getElementById('ageInput');
 
-//asigned variables
+//price output
 
-let age;
-let km;
-let price;
+const yourPrice = document.getElementById('price')
 
 //read the input data before submiting the form
 
@@ -25,28 +25,31 @@ myForm.addEventListener('submit', function(event){
     event.preventDefault();
 
     //transform input data into numbers
-    age = Number(ageInput.value);
-    km = Number(kmInput.value);
 
-    //price calcolations
-    if (!isNaN (km)){                //verification if km is a number
-        price = km * kmPrice         //full price
-    } else{
-        alert('ops... qualcosa è andato storto prova ad inserire un numero nei campi richiesti')
-    }
+    const age = Number(ageInput.value);
+    const km = Number(kmInput.value);
 
-    //discounted prices
-    if (!isNaN(age)){                                           //verification if age is a number
-        if (age < underAge){                                    //discount under 18
-            price = price - ((price * underDiscount) / 100);
-        } else if (age > overAge){                              //discount over 65
-            price = price - ((price * overDiscount) / 100);
-        }
-        console.log(`€ ${ price.toFixed(2)}`);
-    } else{
-        
+    //verification if km and age are not numbers if so i get an alert
+
+    if ((isNaN (km) || isNaN(age)) || ((age < 0) || (km < 0))){
+        alert('ops... qualcosa è andato storto prova ad inserire un numero valido nei campi richiesti');
     }
     
+    //full price
+
+    let price = km * kmPrice
+
+    //discounted prices
+
+    if (age < underAge){
+        price = price - ((price * underDiscount) / 100);
+    } else if (age > overAge){
+        price = price - ((price * overDiscount) / 100);
+    }
+    
+    yourPrice.innerHTML = `€ ${ price.toFixed(2)}`
+    document.getElementById('priceArea').classList.remove('d-none');
+
     //clear input areas
     kmInput.value = '' ;
     ageInput.value = '' ;
